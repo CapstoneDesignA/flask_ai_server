@@ -14,8 +14,8 @@
 
 **1. 테스트 모델 혼잡도 반환**
 - path : `/test/model`
-- request param : `rain_percent`, `search_volume`
-- example : `http://{SERVER_ADDR}:{PORT}/test/model?rain_percent={강수량}&search_volume={검색량}`
+- request param : `rain_percent`
+- example : `http://{SERVER_ADDR}:{PORT}/test/model?rain_percent={강수량}`
 - success response
   ```response
   {
@@ -30,5 +30,8 @@
   {
     "isSuccess":false
     , "message":"{ERROR_MSG}"}
+  }
   ```
-  
+- todo
+  1. 실시간 검색량 산출할 방법 모색.
+  2. 모델의 결과값인 예상 매출액을 혼잡도로 변경하는 로직 필요.
