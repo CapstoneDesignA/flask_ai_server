@@ -26,16 +26,15 @@ def index():
 @app.route('/test/model')
 def restful_model_predict_test():
     parameter_dict = request.args.to_dict()
-    required_params = ['rain_percent', 'search_volume']
+    required_params = ['rain_percent']
     for param in required_params:
         if param not in parameter_dict:
-            return toFailureResponse('rain_percent, search_volume param is necessary.'), 400
+            return toFailureResponse('rain_percent param is necessary.'), 400
 
     try:
         rain_percent = float(parameter_dict['rain_percent'])
-        search_volume = float(parameter_dict['search_volume'])
     except ValueError as e:
-        return toFailureResponse('rain_percent, search_volume is not numeric.'), 400
+        return toFailureResponse('rain_percent is not numeric.'), 400
 
     time_info = datetime.datetime.now()
     month = time_info.month
@@ -43,11 +42,13 @@ def restful_model_predict_test():
     hour = time_info.hour
     dow = time_info.weekday() + 1
 
+    search_volume = 100 # todo : 검색량은 Flask Server에서 계산하여 넣기.
     new_input = np.array([[month, day, dow, hour, rain_percent, search_volume]])
     new_input = new_input.astype('float32')
     prediction = test_model.predict(new_input)
     ret = str(prediction[0][0])
 
+    # todo : 현재 prediction의 값은 예상 매출이므로 혼잡도로 계산한 뒤 Spring boot Server로 반환하는 작업 필요함.
     data = {'congestion': ret}
     res = toSuccessResponse(data)
     return res, 200
