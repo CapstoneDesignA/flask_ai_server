@@ -7,6 +7,7 @@
 1. 파이썬 설치 : `$python3.10 -m venv .venv`
 2. 가상환경 만들기 : `$source {PROJECT_PATH}/.venv/bin/activate`
 3. tensorflow 설치 : `$pip install tensorflow==2.15.0`
+4. pandas 설치 : `$pip install pandas==2.2.2`
 4. 가상환경 종료 시 : `$deactivate`
 5. flask 앱 실행 : `$flask run`
 
@@ -33,5 +34,6 @@
   }
   ```
 - todo
-  1. 실시간 검색량 산출할 방법 모색.
-  2. 모델의 결과값인 예상 매출액을 혼잡도로 변경하는 로직 필요.
+  - [ ] 실시간 검색량 산출할 방법 모색.
+  - [ ] 디렉토리 분리.
+  - [X] 모델의 결과값인 예상 매출액을 혼잡도로 변경하는 로직 필요.
