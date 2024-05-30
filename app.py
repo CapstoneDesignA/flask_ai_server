@@ -1,17 +1,25 @@
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '1'
+
 import numpy as np
 import pandas as pd
 import tensorflow as tf
 import datetime
 
 from flask import Flask, request
-from flask_restful import Api, Resource
-from tensorflow import keras
+from flask_restful import Api
 
 app = Flask(__name__)
 api = Api(app)
 
-test_model = tf.keras.models.load_model('./model/test_sales_prediction_model.h5')
+# # Define and register the custom mse function if it is custom
+# @tf.keras.utils.register_keras_serializable()
+# def mse(y_true, y_pred):
+#     return tf.reduce_mean(tf.square(y_true - y_pred))
 
+# Load the model with the custom object
+test_model = tf.keras.models.load_model('./model/test_sales_prediction_model.h5', compile=False)
+test_model.compile(optimizer='adam', loss='mean_squared_error')
 
 def toFailureResponse(msg):
     response = {'isSuccess': False, 'message': msg}
