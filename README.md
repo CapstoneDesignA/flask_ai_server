@@ -1,15 +1,16 @@
-# flask_ai_server
+# flask_ai_server For Window
 
-- python version : 3.10.14
-- tensorflow version : 2.15.0
+- python version : 3.12.3
+- tensorflow version : 2.16.1
 
 ## 가상환경 설정
-1. 파이썬 설치 : `$python3.10 -m venv .venv`
-2. 가상환경 만들기 : `$source {PROJECT_PATH}/.venv/bin/activate`
-3. tensorflow 설치 : `$pip install tensorflow==2.15.0`
-4. pandas 설치 : `$pip install pandas==2.2.2`
-4. 가상환경 종료 시 : `$deactivate`
-5. flask 앱 실행 : `$flask run`
+1. 파이썬 설치 : `$python -m venv .venv`
+2. 가상환경 만들기 : `$source {PROJECT_PATH}/.venv/Scripts/activate`
+3. tensorflow 설치 : `$pip install tensorflow==2.16.1`
+4. pandas 설치 : `$pip install pandas`
+5. flask-restful 설치
+6. flask 앱 실행 : `$flask run`
+7. 가상환경 종료 시 : `$deactivate`
 
 ## API 명세
 
