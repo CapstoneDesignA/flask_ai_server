@@ -86,8 +86,8 @@ def restful_model_predict_test():
     path = 'data/gf_data_test.csv'
     column_name = 'PAYMENT'
     max_sales, avg_sales = get_max_and_mean_csv(path, column_name)
-    congestion = calculate_congestion(prediction, avg_sales, max_sales)
-    ret = str(congestion)
+    congestion = calculate_congestion(prediction[0], avg_sales, max_sales)
+    ret = str(congestion[0])
     data = {'congestion': ret}
     res = toSuccessResponse(data)
     return res, 200
