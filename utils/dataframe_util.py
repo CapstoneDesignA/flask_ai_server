@@ -10,11 +10,11 @@ def get_max_and_mean_csv(csv_file_path, column_name):
 
 def calculate_congestion(prediction, average_sales, max_sales, average_congestion=40):
     if prediction <= 0:
-        return 0
+        return [0]
     elif prediction == average_sales:
-        return average_congestion
+        return [average_congestion]
     else:
         if prediction >= max_sales:
-            return 100
+            return [100]
         else:
             return average_congestion + ((prediction - average_sales) / (max_sales - average_sales)) * (100 - average_congestion)

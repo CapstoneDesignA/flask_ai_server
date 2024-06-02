@@ -11,7 +11,7 @@ class DataService:
     pytrends = TrendReq(hl='ko', tz=540)
 
     @staticmethod
-    def get_grandfa_factory_trends_naver():
+    def get_trends_by_naver(keyword):
         url = "https://openapi.naver.com/v1/datalab/search"
         today = datetime.datetime.now()
         end_date = today - datetime.timedelta(days=1)
@@ -24,8 +24,8 @@ class DataService:
             "timeUnit": "date",
             "keywordGroups": [
                 {{
-                    "groupName": "성수동",
-                    "keywords": ["성수동"]
+                    "groupName": "{keyword}",
+                    "keywords": ["{keyword}"]
                 }}
             ],
             "device": "mo"
