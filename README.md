@@ -28,10 +28,11 @@ NAVER_CLIENT_SECRET=${네이버 클라이언트 Secret Key}
 
 ## API 명세
 
-**1. 테스트 모델 혼잡도 반환**
-- path : `/test/model`
+**1. 매장 모델 혼잡도 반환**
+- path : `/model/{매장코드}`
+- 매장 코드 : test, gf_factory, pho_ongnam, hello_snack
 - request param : `rain_percent`
-- example : `http://{SERVER_ADDR}:{PORT}/test/model?rain_percent={강수량}`
+- example : `http://{SERVER_ADDR}:{PORT}/model/gf_factory?rain_percent={강수량}`
 - success response
   ```response
   {
@@ -48,8 +49,3 @@ NAVER_CLIENT_SECRET=${네이버 클라이언트 Secret Key}
     , "message":"{ERROR_MSG}"}
   }
   ```
-- todo
-  - [X] 실시간 검색량 산출할 방법 모색.
-  - [X] 파일 및 디렉토리 분리.
-  - [X] 모델의 결과값인 예상 매출액을 혼잡도로 변경하는 로직 필요.
-  - [ ] 다른 가게들에 대한 모델 삽입 후 구현.
