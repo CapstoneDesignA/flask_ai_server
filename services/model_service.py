@@ -72,6 +72,17 @@ class ModelService:
             raise ValueError
         search_volume = expected_search_vol[period]
 
+        if model_type == 1 and (hour < 11 or hour >= 22):
+            return {'congestion': 0}
+        elif model_type == 2 and (hour < 11 or hour >= 15):
+            return {'congestion': 0}
+        elif model_type == 2 and (dow == 6 or dow == 7):
+            return {'congestion': 0}
+        elif model_type == 3 and (hour < 13 or hour >= 21):
+            return {'congestion': 0}
+        elif model_type == 3 and (dow == 1 or dow == 2):
+            return {'congestion': 0}
+
         new_input = np.array([[month, day, period, rain_percent, dow, search_volume]])
         new_input = new_input.astype('float32')
         if model_type == 0:
